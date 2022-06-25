@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment Booking System</title>
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body{
+            background-color: #ebeff5;
+        }
+        .total-appointments{
+            background-color: #4cb4c7;
+        }
+        .appointments-pending{
+            background-color: #7abecc;
+        }
+        .appointments-completed{
+            background-color: #7cd1c0;
+        }
+    </style>
+</head>
+<body>
+    {% include 'core/navbar.html' %}
+    {% block content %}
+    {% endblock content %}
+
+
+</body>
+</html>

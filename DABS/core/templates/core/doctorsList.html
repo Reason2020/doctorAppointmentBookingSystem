@@ -1,0 +1,85 @@
+{% extends 'core/main.html' %}
+
+{% block content %}
+<br>
+<div class="row">
+    <!-- Total -->
+    <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-white mb-3 total-appointments">
+                <div class="card-header">
+                    <h5 class="card-title">Total Doctors</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ doctors_count }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MDs -->
+    <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-white mb-3 total-appointments">
+                <div class="card-header">
+                    <h5 class="card-title">MD Doctors</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ md_doctors }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- DOs -->
+    <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-white mb-3 total-appointments">
+                <div class="card-header">
+                    <h5 class="card-title">DO Doctors</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ do_doctors }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <h3>DOCTORS:</h3>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Degree</th>
+                    <th>Specialty</th>
+                    <th>Shift</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for doctor in doctors %}
+                <tr>
+                    <th>{{ doctor.first_name }}</th>
+                    <th>{{ doctor.last_name }}</th>
+                    <th>{{ doctor.email }}</th>
+                    <th>{{ doctor.phone }}</th>
+                    <th>{{ doctor.address }}</th>
+                    <th>{{ doctor.degree }}</th>
+                    <th>{{ doctor.specialty }}</th>
+                    <th>{{ doctor.shift.name }}</th>
+                    <th><a href="{% url 'doctorUpdate' doctor.id %}" class="btn btn-sm btn-info">Update</a></th>
+                    <th><a href="{% url 'doctorDelete' doctor.id %}" class="btn btn-sm btn-danger">Remove</a></th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <br>
+        <a href="{% url 'doctorRegistration' %}" class="btn btn-lg btn-primary">Register New Doctor</a>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,79 @@
+{% extends 'core/main.html' %}
+
+{% block content %}
+<br>
+<div class="row">
+    <!-- Total -->
+    <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-white mb-3 total-appointments">
+                <div class="card-header">
+                    <h5 class="card-title">Total Patients</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ patient_count }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MDs -->
+    <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-white mb-3 total-appointments">
+                <div class="card-header">
+                    <h5 class="card-title">Male Patient</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ male_patient }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- DOs -->
+    <div class="col">
+        <div class="col-md">
+            <div class="card text-center text-white mb-3 total-appointments">
+                <div class="card-header">
+                    <h5 class="card-title">Female Patient</h5>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{ female_patient }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <h3>PATIENTS:</h3>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Marital Status</th>
+                </tr>
+                {% for patient in patients %}
+                <tr>
+                    <td>{{ patient.first_name }}</td>
+                    <td>{{ patient.last_name }}</td>
+                    <td>{{ patient.email }}</td>
+                    <td>{{ patient.dob }}</td>
+                    <td>{{ patient.gender }}</td>
+                    <td>{{ patient.address }}</td>
+                    <td>{{ patient.phone }}</td>
+                    <td>{{ patient.marital_status }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'core/main.html' %}
+
+{% block content %}
+
+<h1>This is Home For Doctors</h1>
+<div class="row">
+    <div class="col-md">
+        <h3>MY APPOINTMENTS:</h3>
+        <table class="table table-sm">
+            <tr>
+                <th>Patient</th>
+                <th>Appointment Reason</th>
+                <th>Appointment Date</th>
+                <th>Appointment Time</th>
+                <th>Appointment Status</th>
+            </tr>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</td>
+                <td>{{ appointment.reason }}</td>
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td>{{ appointment.status }}</td>
+            </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

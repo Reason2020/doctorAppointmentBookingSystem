@@ -1,0 +1,42 @@
+<style>
+    .hello-msg{
+        font-size: 18px;
+        color: #fff;
+        margin-right: 20px;
+    }
+
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'admin' %}">Doctor Appointment Booking System</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            {% if request.user.is_staff %}
+                {% comment %} <li class="nav-item">
+                    <a class="nav-link" href="#">Admins</a>
+                </li> {% endcomment %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'doctorsList' %}">Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'patientsList' %}">Patients</a>
+                </li>
+
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'myAppointments' %}">My Appointments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account' %}">My Profile</a>
+                </li>
+            {% endif %}
+        </ul>
+      </div>
+    </div>
+    <span class="hello-msg">Hello, {{request.user}}</span>
+    <span><a href="{% url 'logout' %}" class="hello-msg">Logout</a></span>
+  </nav>

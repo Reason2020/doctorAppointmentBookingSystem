@@ -1,0 +1,15 @@
+{% extends 'core/main.html' %}
+
+{% block content %}
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a href="{% url 'user' %}" class="btn btn-md btn-block btn-primary">Cancel</a> | <input type="submit" value="Update Appointment" class="btn btn-md btn-block btn-info">
+</form>
+<hr>
+<div class="alert alert-warning" role="alert">
+    Please Make Sure To Bring In The Appointment PDF With You During The Visit! And Do Fill Up Your Profile Before Making An Appointment! - Thank You!
+</div>
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'core/main.html' %}
+
+{% block content %}
+
+<form method="POST" action="" style="margin: 25px;">
+    {% csrf_token %}
+    <p>Please Enter Your Login Credentials To Confirm Deletion of {{ selected_doctor.first_name }} {{ selected_doctor.last_name }}<!--Doctor Name Here--> From Database?</p>
+
+    <div class="input-group mb-3">
+        <input type="text" name="username" placeholder="Username..." >
+    </div>
+    <div class="input-group mb-2">
+            <input type="password" name="password" placeholder="Password...">
+    </div>
+    <br>
+
+    <a href="{url 'doctorsList'}" class="btn btn-sm btn-block btn-primary">Cancel</a> | <input type="submit" value="Confirm" class="btn btn-sm btn-block btn-danger"/>
+</form>
+
+{% for message in messages %}
+    <p id="messages" style="margin-left: 25px">{{ message }}</p>
+{% endfor %}
+
+{% endblock content %}

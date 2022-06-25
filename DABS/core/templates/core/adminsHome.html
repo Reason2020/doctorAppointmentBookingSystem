@@ -1,0 +1,38 @@
+{% extends 'core/main.html' %}
+
+{% block content %}
+{% include 'core/status.html' %}
+<br>
+<div class="row">
+    <div class="col">
+        <h3>LAST 5 APPOINTMENTS:</h3>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Appointment Reason</th>
+                    <th>Appointment Date</th>
+                    <th>Appointment Time</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.patient.first_name }}</td>
+                    <td>{{ appointment.doctor.first_name }}</td>
+                    <td>{{ appointment.reason }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.time }}</td>
+                    <td>{{ appointment.status }}</td>
+                    <td><a href="{% url 'appointmentUpdate' appointment.id %}" class="btn btn-sm btn-info">Update</a></td>
+                    <td><a href="{% url 'appointmentDelete' appointment.id %}" class="btn btn-sm btn-danger">Remove</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

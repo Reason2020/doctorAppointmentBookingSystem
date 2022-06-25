@@ -1,0 +1,45 @@
+{% extends 'core/main.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form method="get">
+                {{doctorFilter.form}}
+
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col">
+        <h3>DOCTORS:</h3>
+        <table class="table table-sm">
+            <tr>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Specialty</th>
+                <th>Degree</th>
+            </tr>
+            {% for doctor in doctors %}
+                <tr>
+                    <td><a href="{% url 'makeAppointment' doctor.id %}" class="btn btn-md btn-block btn-info">Make Appointment</a></td>
+                    <td>{{ doctor.first_name }}</td>
+                    <td>{{ doctor.last_name }}</td>
+                    <td>{{ doctor.specialty }}</td>
+                    <td>{{ doctor.degree }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<hr>
+<div class="alert alert-warning" role="alert">
+    Please Make Sure To Bring In The Appointment PDF With You During The Visit! And Do Fill Up Your Profile Before Making An Appointment! - Thank You!
+</div>
+
+{% endblock content %}
